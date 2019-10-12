@@ -5,6 +5,7 @@ namespace Pets.Core.Model
 {
   public class BanhoPet
   {
+    public Guid Id { get; set; }
     public DateTime Data { get; set; }
     public Guid PetId { get; set; }
     public decimal Valor { get; set; }

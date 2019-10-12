@@ -6,6 +6,7 @@ namespace Pets.Core.Data
   public class PetsContext : DbContext
   {
     public DbSet<Pet> Pets { get; set; }
+    public DbSet<BanhoPet> Banhos { get; set; }
 
     public PetsContext(DbContextOptions<PetsContext> options) : base(options)
     {
@@ -31,6 +32,14 @@ namespace Pets.Core.Data
       petBuilder
         .Property(p => p.Raca)
         .IsRequired(false);
+
+      var banhoPetBuilder = modelBuilder.Entity<BanhoPet>();
+
+      banhoPetBuilder
+        .HasKey(c => c.Id);
+      banhoPetBuilder.Property(x => x.Data).IsRequired();
+      banhoPetBuilder.Property(x => x.Valor).IsRequired();
+      banhoPetBuilder.HasOne(x => x.Pet).WithMany(x => x.Banhos).HasForeignKey(x => x.PetId);
     }
   }
 }

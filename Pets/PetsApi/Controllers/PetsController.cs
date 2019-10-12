@@ -45,12 +45,7 @@ namespace PetsApi.Controllers
     [HttpPut("{id}")]
     public async Task<IActionResult> PutPet(Guid id, Pet pet)
     {
-      if (id != pet.Id)
-      {
-        return BadRequest();
-      }
-
-      _context.Entry(pet).State = EntityState.Modified;
+      _context.Entry(pet.SetId(id)).State = EntityState.Modified;
 
       try
       {

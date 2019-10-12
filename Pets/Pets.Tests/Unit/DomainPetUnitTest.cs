@@ -5,17 +5,13 @@ using Xunit;
 
 namespace Pets.Tests.Unit
 {
-  public class DomainPetUnitTest
+  public class DomainPetUnitTest : IClassFixture<DomainPetUnitTest>
   {
     [Theory]
     [InlineData(
       "Bau bau",
       "um cachorro feliz"
     )]
-    //[InlineData(
-    //  "Bau bau",
-    //  null
-    //)]
     public void Deveria_Criar_Pet_Com_Dados_Obrigatorios(
         string nome,
         string descricao
